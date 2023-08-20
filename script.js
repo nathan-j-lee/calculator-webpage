@@ -7,6 +7,18 @@ function operate(operation, firstNumber, secondNumber) {
     this.operation = operation;
     this.firstNumber = firstNumber;
     this.secondNumber = secondNumber;
+    if (this.operation = '+') {
+        return result = add(this.firstNumber, this.secondNumber);
+    }
+    if (this.operation = '-') {
+        return result = subtract(this.firstNumber, this.secondNumber);
+    }
+    if (this.operation = '*') {
+        return result = multiply(this.firstNumber, this.secondNumber);
+    }
+    if (this.operation = '/') {
+        return result = divide(this.firstNumber, this.secondNumber);
+    }
 }
 
 function add(firstNumber, secondNumber) {
