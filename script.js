@@ -48,3 +48,13 @@ first.forEach(button => {
         input.value = result;
     });
 });
+
+const clear = document.querySelector('.calc-button.clear');
+clear.addEventListener('click', () => {
+    clearDisplay();
+});
+
+function clearDisplay() {
+    result = "";
+    input.value = result;
+}
