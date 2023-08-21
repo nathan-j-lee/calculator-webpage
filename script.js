@@ -14,29 +14,33 @@ const clearButton = document.querySelector('.calc-button.clear');
 const equalsButton = document.querySelector('.calc-button.equals');
 
 function operate(operation, firstNumber, secondNumber) {
-    if (operation = '+') {
+    if (operation == '+') {
         return result = add(firstNumber, secondNumber);
     }
-    if (operation = '-') {
+    if (operation == '-') {
         return result = subtract(firstNumber, secondNumber);
     }
-    if (operation = '*') {
+    if (operation == '*') {
         return result = multiply(firstNumber, secondNumber);
     }
-    if (operation = '/') {
+    if (operation == '/') {
         return result = divide(firstNumber, secondNumber);
     }
 }
 function add(firstNumber, secondNumber) {
+    console.log("add");
     return parseInt(firstNumber) + parseInt(secondNumber);
 }
 function subtract(firstNumber, secondNumber) {
+    console.log("sub");
     return parseInt(firstNumber) - parseInt(secondNumber);
 }
 function multiply(firstNumber, secondNumber) {
+    console.log("mult");
     return parseInt(firstNumber) * parseInt(secondNumber);
 }
 function divide(firstNumber, secondNumber) {
+    console.log("div");
     return parseInt(firstNumber) / parseInt(secondNumber);
 }
 function clearDisplay() {
@@ -69,6 +73,9 @@ equalsButton.addEventListener('click', () => {
         clearDisplay();
         let total = operate(operation, firstNumber, secondNumber);
         displayBar.value = total;
+        console.log(firstNumber);
+        console.log(operation);
+        console.log(secondNumber);
     }
 });
 
@@ -80,7 +87,7 @@ operationButton.forEach(button => {
         console.log(operation);
         firstNumberCheck = false;
         secondNumberCheck = true;
-        clearDisplay();
+        result = "";
     });
 });
 
