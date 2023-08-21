@@ -28,16 +28,16 @@ function operate(operation, firstNumber, secondNumber) {
     }
 }
 function add(firstNumber, secondNumber) {
-    return firstNumber + secondNumber;
+    return parseInt(firstNumber) + parseInt(secondNumber);
 }
 function subtract(firstNumber, secondNumber) {
-    return firstNumber - secondNumber;
+    return parseInt(firstNumber) - parseInt(secondNumber);
 }
 function multiply(firstNumber, secondNumber) {
-    return firstNumber * secondNumber;
+    return parseInt(firstNumber) * parseInt(secondNumber);
 }
 function divide(firstNumber, secondNumber) {
-    return firstNumber / secondNumber;
+    return parseInt(firstNumber) / parseInt(secondNumber);
 }
 function clearDisplay() {
     result = "";
@@ -47,28 +47,28 @@ function clearDisplay() {
 firstInput.forEach(button => {
     button.addEventListener('click', (e) => {
         //console.log(e.target.textContent);
-        let value = e.target.textContent;
-        result += value;
-        displayBar.value = result;
-        firstNumber = result;
+        if (firstNumberCheck) {
+            let value = e.target.textContent;
+            result += value;
+            displayBar.value = result;
+            firstNumber = result;
+        }
+        if (secondNumberCheck) {
+            let value = e.target.textContent;
+            result += value;
+            displayBar.value = result;
+            secondNumber = result;
+        }
     });
 });
 
-// secondInput.forEach(button => {
-//     button.addEventListener('click', (e) => {
-//         //console.log(e.target.textContent);
-//         let value = e.target.textContent;
-//         result += value;
-//         displayBar.value = result;
-//     });
-// });
-
 equalsButton.addEventListener('click', () => {
-    //console.log(equalsButton);
+    console.log(equalsButton);
     if (secondNumberCheck) {
-        secondNumber = displayBar.value;
-        secondNumberCheck = false;
-        firstNumberCheck = true;
+        console.log("equals button");
+        clearDisplay();
+        let total = operate(operation, firstNumber, secondNumber);
+        displayBar.value = total;
     }
 });
 
@@ -78,6 +78,9 @@ operationButton.forEach(button => {
         console.log(firstNumber);
         operation = e.target.textContent;
         console.log(operation);
+        firstNumberCheck = false;
+        secondNumberCheck = true;
+        clearDisplay();
     });
 });
 
