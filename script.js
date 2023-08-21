@@ -2,10 +2,16 @@ var firstNumber;
 var operation;
 var secondNumber;
 var result = "";
+var firstNumberCheck = true;
+var operationCheck = false;
+var secondNumberCheck = false;
 
 const displayBar = document.getElementById('display');
 const firstInput = document.querySelectorAll('.calc-button.number');
+const secondInput = document.querySelectorAll('.calc-button.number');
+const operationButton = document.querySelectorAll('.calc-button.operation');
 const clearButton = document.querySelector('.calc-button.clear');
+const equalsButton = document.querySelector('.calc-button.equals');
 
 function operate(operation, firstNumber, secondNumber) {
     if (operation = '+') {
@@ -46,6 +52,34 @@ firstInput.forEach(button => {
         displayBar.value = result;
     });
 });
+
+// secondInput.forEach(button => {
+//     button.addEventListener('click', (e) => {
+//         //console.log(e.target.textContent);
+//         let value = e.target.textContent;
+//         result += value;
+//         displayBar.value = result;
+//     });
+// });
+
+equalsButton.addEventListener('click', () => {
+    //console.log(equalsButton);
+    if (secondNumberCheck) {
+        secondNumber = displayBar.value;
+        secondNumberCheck = false;
+        firstNumberCheck = true;
+    }
+});
+
+operationButton.forEach(button => {
+    button.addEventListener('click', (e) => {
+        //console.log(e.target.textContent);
+        operation = e.target.textContent;
+        //operation = button.value;
+        console.log(operation);
+    });
+});
+
 clearButton.addEventListener('click', () => {
     clearDisplay();
 });
