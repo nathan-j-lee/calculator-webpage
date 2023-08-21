@@ -36,3 +36,10 @@ function multiply(firstNumber, secondNumber) {
 function divide(firstNumber, secondNumber) {
     return firstNumber / secondNumber;
 }
+
+const first = document.querySelectorAll('.calc-button.number');
+first.forEach(button => {
+    button.addEventListener('click', (e) => {
+        console.log(e.target.textContent);
+    });
+});
