@@ -46,6 +46,6 @@ firstInput.forEach(button => {
         displayBar.value = result;
     });
 });
-clear.addEventListener('click', () => {
+clearButton.addEventListener('click', () => {
     clearDisplay();
 });
