@@ -1,7 +1,7 @@
 var firstNumber;
 var operation;
 var secondNumber;
-var result;
+var result = "";
 
 function operate(operation, firstNumber, secondNumber) {
     this.operation = operation;
@@ -37,9 +37,14 @@ function divide(firstNumber, secondNumber) {
     return firstNumber / secondNumber;
 }
 
+const input = document.getElementById('display');
+
 const first = document.querySelectorAll('.calc-button.number');
 first.forEach(button => {
     button.addEventListener('click', (e) => {
-        console.log(e.target.textContent);
+        //console.log(e.target.textContent);
+        let value = e.target.textContent;
+        result += value;
+        input.value = result;
     });
 });
