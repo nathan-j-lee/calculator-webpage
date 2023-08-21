@@ -3,58 +3,49 @@ var operation;
 var secondNumber;
 var result = "";
 
+const displayBar = document.getElementById('display');
+const firstInput = document.querySelectorAll('.calc-button.number');
+const clearButton = document.querySelector('.calc-button.clear');
+
 function operate(operation, firstNumber, secondNumber) {
-    this.operation = operation;
-    this.firstNumber = firstNumber;
-    this.secondNumber = secondNumber;
-    if (this.operation = '+') {
-        return result = add(this.firstNumber, this.secondNumber);
+    if (operation = '+') {
+        return result = add(firstNumber, secondNumber);
     }
-    if (this.operation = '-') {
-        return result = subtract(this.firstNumber, this.secondNumber);
+    if (operation = '-') {
+        return result = subtract(firstNumber, secondNumber);
     }
-    if (this.operation = '*') {
-        return result = multiply(this.firstNumber, this.secondNumber);
+    if (operation = '*') {
+        return result = multiply(firstNumber, secondNumber);
     }
-    if (this.operation = '/') {
-        return result = divide(this.firstNumber, this.secondNumber);
+    if (operation = '/') {
+        return result = divide(firstNumber, secondNumber);
     }
 }
-
 function add(firstNumber, secondNumber) {
     return firstNumber + secondNumber;
 }
-
 function subtract(firstNumber, secondNumber) {
     return firstNumber - secondNumber;
 }
-
 function multiply(firstNumber, secondNumber) {
     return firstNumber * secondNumber;
 }
-
 function divide(firstNumber, secondNumber) {
     return firstNumber / secondNumber;
 }
+function clearDisplay() {
+    result = "";
+    displayBar.value = result;
+}
 
-const input = document.getElementById('display');
-
-const first = document.querySelectorAll('.calc-button.number');
-first.forEach(button => {
+firstInput.forEach(button => {
     button.addEventListener('click', (e) => {
         //console.log(e.target.textContent);
         let value = e.target.textContent;
         result += value;
-        input.value = result;
+        displayBar.value = result;
     });
 });
-
-const clear = document.querySelector('.calc-button.clear');
 clear.addEventListener('click', () => {
     clearDisplay();
 });
-
-function clearDisplay() {
-    result = "";
-    input.value = result;
-}
