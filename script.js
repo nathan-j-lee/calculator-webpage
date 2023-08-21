@@ -50,6 +50,7 @@ firstInput.forEach(button => {
         let value = e.target.textContent;
         result += value;
         displayBar.value = result;
+        firstNumber = result;
     });
 });
 
@@ -74,8 +75,8 @@ equalsButton.addEventListener('click', () => {
 operationButton.forEach(button => {
     button.addEventListener('click', (e) => {
         //console.log(e.target.textContent);
+        console.log(firstNumber);
         operation = e.target.textContent;
-        //operation = button.value;
         console.log(operation);
     });
 });
