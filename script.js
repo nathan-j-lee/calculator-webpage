@@ -88,13 +88,28 @@ equalsButton.addEventListener('click', () => {
 
 operationButton.forEach(button => {
     button.addEventListener('click', (e) => {
+        if (secondNumberCheck) {
+            console.log("operation pressed on second number");
+            clearDisplay();
+            let total = operate(operation, firstNumber, secondNumber);
+            displayBar.value = total;
+            console.log("previous op: " + operation);
+            operation = e.target.textContent;
+            console.log("recent op: " + operation);
+            firstNumber = total;
+            secondNumber = "";
+            result = total;
+        }
+
         //console.log(e.target.textContent);
-        console.log(firstNumber);
-        operation = e.target.textContent;
-        console.log(operation);
-        firstNumberCheck = false;
-        secondNumberCheck = true;
-        result = "";
+        else {
+            console.log(firstNumber);
+            operation = e.target.textContent;
+            console.log(operation);
+            firstNumberCheck = false;
+            secondNumberCheck = true;
+            result = "";
+        }
 
         // on equals state, when operation is pressed, go back to second number state
         if (equalsCheck) {
