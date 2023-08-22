@@ -4,6 +4,7 @@ var secondNumber;
 var result = "";
 var firstNumberCheck = true;
 var secondNumberCheck = false;
+var equalsCheck = false;
 
 const displayBar = document.getElementById('display');
 const numberInput = document.querySelectorAll('.calc-button.number');
@@ -49,12 +50,14 @@ function clearDisplay() {
 numberInput.forEach(button => {
     button.addEventListener('click', (e) => {
         //console.log(e.target.textContent);
+        //start/firstNum state
         if (firstNumberCheck) {
             let value = e.target.textContent;
             result += value;
             displayBar.value = result;
             firstNumber = result;
         }
+        //second num state
         if (secondNumberCheck) {
             let value = e.target.textContent;
             result += value;
@@ -66,7 +69,7 @@ numberInput.forEach(button => {
 
 equalsButton.addEventListener('click', () => {
     console.log(equalsButton);
-    if (secondNumberCheck) {
+    if (secondNumberCheck && !equalsCheck) {
         console.log("equals button");
         clearDisplay();
         let total = operate(operation, firstNumber, secondNumber);
@@ -76,6 +79,10 @@ equalsButton.addEventListener('click', () => {
         console.log(secondNumber);
         firstNumber = total;
         result = total;
+        equalsCheck = true;
+    }
+    else {
+        console.log("Loop");
     }
 });
 
@@ -88,9 +95,15 @@ operationButton.forEach(button => {
         firstNumberCheck = false;
         secondNumberCheck = true;
         result = "";
+
+        // on equals state, when operation is pressed, go back to second number state
+
     });
 });
 
 clearButton.addEventListener('click', () => {
     clearDisplay();
+    firstNumber = "";
+    secondNumber = "";
+    operation = "";
 });
