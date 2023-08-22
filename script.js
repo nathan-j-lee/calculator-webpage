@@ -1,14 +1,12 @@
-var firstNumber;
+var firstNumber = 0;
 var operation;
 var secondNumber;
 var result = "";
 var firstNumberCheck = true;
-var operationCheck = false;
 var secondNumberCheck = false;
 
 const displayBar = document.getElementById('display');
-const firstInput = document.querySelectorAll('.calc-button.number');
-const secondInput = document.querySelectorAll('.calc-button.number');
+const numberInput = document.querySelectorAll('.calc-button.number');
 const operationButton = document.querySelectorAll('.calc-button.operation');
 const clearButton = document.querySelector('.calc-button.clear');
 const equalsButton = document.querySelector('.calc-button.equals');
@@ -41,14 +39,14 @@ function multiply(firstNumber, secondNumber) {
 }
 function divide(firstNumber, secondNumber) {
     console.log("div");
-    return parseInt(firstNumber) / parseInt(secondNumber);
+    return (parseFloat(firstNumber) / parseFloat(secondNumber)).toFixed(3);
 }
 function clearDisplay() {
     result = "";
     displayBar.value = result;
 }
 
-firstInput.forEach(button => {
+numberInput.forEach(button => {
     button.addEventListener('click', (e) => {
         //console.log(e.target.textContent);
         if (firstNumberCheck) {
@@ -76,6 +74,8 @@ equalsButton.addEventListener('click', () => {
         console.log(firstNumber);
         console.log(operation);
         console.log(secondNumber);
+        firstNumber = total;
+        result = total;
     }
 });
 
