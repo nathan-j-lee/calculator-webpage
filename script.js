@@ -82,7 +82,7 @@ equalsButton.addEventListener('click', () => {
         equalsCheck = true;
     }
     else {
-        console.log("Loop");
+        console.log("equals Loop");
     }
 });
 
@@ -97,7 +97,10 @@ operationButton.forEach(button => {
         result = "";
 
         // on equals state, when operation is pressed, go back to second number state
-
+        if (equalsCheck) {
+            equalsCheck = false;
+            secondNumber = true;
+        }
     });
 });
 
