@@ -1,10 +1,11 @@
-var firstNumber = 0;
+var firstNumber = "0";
 var operation;
 var secondNumber;
 var result = "";
 var firstNumberCheck = true;
 var secondNumberCheck = false;
 var equalsCheck = false;
+var secondOperationCheck = false;
 
 const displayBar = document.getElementById('display');
 const numberInput = document.querySelectorAll('.calc-button.number');
@@ -40,11 +41,28 @@ function multiply(firstNumber, secondNumber) {
 }
 function divide(firstNumber, secondNumber) {
     console.log("div");
-    return (parseFloat(firstNumber) / parseFloat(secondNumber)).toFixed(3);
+    if (parseFloat(firstNumber) % parseFloat(secondNumber) == 0) {
+        return parseInt(firstNumber) / parseInt(secondNumber);
+    }
+    else {
+        return (parseFloat(firstNumber) / parseFloat(secondNumber)).toFixed(3);
+    }
 }
 function clearDisplay() {
     result = "";
     displayBar.value = result;
+}
+
+function clear() {
+    clearDisplay();
+    firstNumber = "0";
+    secondNumber = "";
+    operation = "";
+    displayBar.value = "0";
+    firstNumberCheck = true;
+    equalsCheck = false;
+    secondNumberCheck = false;
+    secondOperationCheck = false;
 }
 
 numberInput.forEach(button => {
@@ -58,11 +76,29 @@ numberInput.forEach(button => {
             firstNumber = result;
         }
         //second num state
-        if (secondNumberCheck) {
+        if (secondNumberCheck && !secondOperationCheck) {
             let value = e.target.textContent;
             result += value;
             displayBar.value = result;
             secondNumber = result;
+        }
+
+        if (secondOperationCheck) {
+            console.log("second op");
+            let value = e.target.textContent;
+            clearDisplay();
+            result += value;
+            displayBar.value = result;
+            secondNumber = result;
+            secondOperationCheck = false;
+        }
+
+        if (equalsCheck) {
+            clear();
+            let value = e.target.textContent;
+            result += value;
+            displayBar.value = result;
+            firstNumber = result;
         }
     });
 });
@@ -71,7 +107,6 @@ equalsButton.addEventListener('click', () => {
     console.log(equalsButton);
     if (secondNumberCheck && !equalsCheck) {
         console.log("equals button");
-        clearDisplay();
         let total = operate(operation, firstNumber, secondNumber);
         displayBar.value = total;
         console.log(firstNumber);
@@ -80,7 +115,9 @@ equalsButton.addEventListener('click', () => {
         firstNumber = total;
         result = total;
         equalsCheck = true;
+        secondNumberCheck = false;
     }
+
     else {
         console.log("equals Loop");
     }
@@ -90,7 +127,6 @@ operationButton.forEach(button => {
     button.addEventListener('click', (e) => {
         if (secondNumberCheck) {
             console.log("operation pressed on second number");
-            clearDisplay();
             let total = operate(operation, firstNumber, secondNumber);
             displayBar.value = total;
             console.log("previous op: " + operation);
@@ -99,6 +135,7 @@ operationButton.forEach(button => {
             firstNumber = total;
             secondNumber = "";
             result = total;
+            secondOperationCheck = true;
         }
 
         //console.log(e.target.textContent);
@@ -114,14 +151,14 @@ operationButton.forEach(button => {
         // on equals state, when operation is pressed, go back to second number state
         if (equalsCheck) {
             equalsCheck = false;
-            secondNumber = true;
+            secondNumberCheck = true;
+            secondOperationCheck = false;
         }
     });
 });
 
 clearButton.addEventListener('click', () => {
-    clearDisplay();
-    firstNumber = "";
-    secondNumber = "";
-    operation = "";
+    clear();
 });
+
+
