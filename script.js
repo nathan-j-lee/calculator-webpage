@@ -24,6 +24,11 @@ function operate(operation, firstNumber, secondNumber) {
         return result = multiply(firstNumber, secondNumber);
     }
     if (operation == '/') {
+        if (secondNumber == 0) {
+            alert("Divide by zero huh?");
+            clear();
+            return 0;
+        }
         return result = divide(firstNumber, secondNumber);
     }
 }
