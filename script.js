@@ -73,37 +73,43 @@ function clear() {
 numberInput.forEach(button => {
     button.addEventListener('click', (e) => {
         //console.log(e.target.textContent);
-        //start/firstNum state
-        if (firstNumberCheck) {
-            let value = e.target.textContent;
-            result += value;
-            displayBar.value = result;
-            firstNumber = result;
-        }
-        //second num state
-        if (secondNumberCheck && !secondOperationCheck) {
-            let value = e.target.textContent;
-            result += value;
-            displayBar.value = result;
-            secondNumber = result;
-        }
 
-        if (secondOperationCheck) {
-            console.log("second op");
-            let value = e.target.textContent;
-            clearDisplay();
-            result += value;
-            displayBar.value = result;
-            secondNumber = result;
-            secondOperationCheck = false;
+        if (result.length >= 20) {
+            console.log("Too long")
         }
+        else {
+            //start/firstNum state
+            if (firstNumberCheck) {
+                let value = e.target.textContent;
+                result += value;
+                displayBar.value = result;
+                firstNumber = result;
+            }
+            //second num state
+            if (secondNumberCheck && !secondOperationCheck) {
+                let value = e.target.textContent;
+                result += value;
+                displayBar.value = result;
+                secondNumber = result;
+            }
 
-        if (equalsCheck) {
-            clear();
-            let value = e.target.textContent;
-            result += value;
-            displayBar.value = result;
-            firstNumber = result;
+            if (secondOperationCheck) {
+                console.log("second op");
+                let value = e.target.textContent;
+                clearDisplay();
+                result += value;
+                displayBar.value = result;
+                secondNumber = result;
+                secondOperationCheck = false;
+            }
+
+            if (equalsCheck) {
+                clear();
+                let value = e.target.textContent;
+                result += value;
+                displayBar.value = result;
+                firstNumber = result;
+            }
         }
     });
 });
