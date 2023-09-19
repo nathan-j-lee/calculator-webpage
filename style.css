@@ -5,7 +5,7 @@ html, body {
 * {
     padding: 30px;
     font-size: 24px;
-    border: 1px solid lightcoral;
+    /*border: 1px solid lightcoral;*/
 }
 
 .container {
@@ -24,6 +24,7 @@ html, body {
     justify-content: flex-start;
     padding-top: 0px;
     padding-right: 0px;
+    flex-direction: column;
 }
 
 .container#numpad button, .container#operations button {
@@ -42,7 +43,7 @@ html, body {
 
 .container#calculator {
     margin: auto;
-    width: 600px;
+    width: 475px;
     height: auto;
     justify-content: center;
     align-items: flex-start;
@@ -51,10 +52,18 @@ html, body {
     flex-direction: column;
 }
 
+.container#numpad .row {
+    padding: 0;
+    display: flex;
+    height: 88px;
+}
+
 .container#operations {
+    display: flex;
     flex-direction: column;
-    padding-left: 0;
     align-items: center;
+    justify-content: flex-start;
+    padding: 0;
 }
 
 #display {
@@ -62,8 +71,6 @@ html, body {
     text-align: right;
     font-size: 30px;
     padding: 25px;
-    margin-bottom: 5px;
-    margin-right: 10px;
     font-family: 'Xenara', sans-serif;
     align-self: flex-end;
 }
