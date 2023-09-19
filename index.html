@@ -12,30 +12,30 @@
 <body>
     <h1 id="title">Calculator</h1>
     <div class="container" id="calculator">
-        
+        <input type="text" value="0" id="display" readonly/>
         <div class="container" id="top-part">
-            <input type="text" value="0" id="display" readonly/>
             <div class="container" id="numpad">
-                <button class="calc-button number" id="one">1</button>
-                <button class="calc-button number" id="two">2</button>
-                <button class="calc-button number" id="three">3</button>
-                <button class="calc-button number" id="four">4</button>
-                <button class="calc-button number" id="five">5</button>
-                <button class="calc-button number" id="six">6</button>
                 <button class="calc-button number" id="seven">7</button>
                 <button class="calc-button number" id="eight">8</button>
                 <button class="calc-button number" id="nine">9</button>
+                <button class="calc-button number" id="four">4</button>
+                <button class="calc-button number" id="five">5</button>
+                <button class="calc-button number" id="six">6</button>
+                <button class="calc-button number" id="one">1</button>
+                <button class="calc-button number" id="two">2</button>
+                <button class="calc-button number" id="three">3</button>
                 <button class="calc-button number" id="zero">0</button>
             </div>
+            <div class="container" id="operations">
+                <button class="calc-button operation" id="add">+</button>
+                <button class="calc-button operation" id="subtract">-</button>
+                <button class="calc-button operation" id="multiply">*</button>
+                <button class="calc-button operation" id="divide">/</button>
+                <button class="calc-button equals" id="equals">=</button>
+                <button class="calc-button clear" id="clear">C</button>
+            </div>
         </div>
-        <div class="container" id="operations">
-            <button class="calc-button operation" id="add">+</button>
-            <button class="calc-button operation" id="subtract">-</button>
-            <button class="calc-button operation" id="multiply">*</button>
-            <button class="calc-button operation" id="divide">/</button>
-            <button class="calc-button equals" id="equals">=</button>
-            <button class="calc-button clear" id="clear">C</button>
-        </div>
+
 
     </div>
 </body>
